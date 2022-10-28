@@ -22,7 +22,7 @@ jobs:
 
       - name: pin4everland
         id: pin4everland
-        uses: 4everland/pin-action@main
+        uses: 4everland/pin-action@v1.0
         with:
           EVER_TOKEN: ${{secrets.EVER_TOKEN}}
           EVER_PROJECT_NAME: "vue-test"
