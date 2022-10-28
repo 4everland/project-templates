@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: track size
+      - name: install and build
         run: npm install && npm run build
         shell: bash
 
@@ -28,6 +28,6 @@ jobs:
           EVER_PROJECT_NAME: "vue-test"
           BUILD_LOCATION: "./dist"
           
-      - name: Run a one-line script
-        run: echo ${{ steps.pin4everland.outputs.uri }}  !!!!
+      - name: output ipfs
+        run: echo ${{ steps.pin4everland.outputs.uri }}
         
