@@ -1,0 +1,33 @@
+name: Build and deploy to IPFS
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: track size
+        run: npm install && npm run build
+        shell: bash
+
+      - name: pin4everland
+        id: pin4everland
+        uses: 4everland/pin-action@main
+        with:
+          EVER_TOKEN: ${{secrets.EVER_TOKEN}}
+          EVER_PROJECT_NAME: "vue-test"
+          BUILD_LOCATION: "./dist"
+          
+      - name: Run a one-line script
+        run: echo ${{ steps.pin4everland.outputs.uri }}  !!!!
+        
